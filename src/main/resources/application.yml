@@ -1,0 +1,69 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gesti-n-de-productos-api
+  main:
+    allow-bean-definition-overriding: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+webclient:
+  api:
+    base-url: http://localhost:8081
+    connect-timeout-seconds: 5  # Netty connector level (infrastructure)
+    paths:
+      getExample:
+        url: /api/v1/resource/{id}
+        connect-timeout-seconds: 5
+        read-timeout-seconds: 10
+        write-timeout-seconds: 30
+        retry-max-attempts: 3
+        retry-delay-seconds: 1
+        headers:
+          x-client-id: example-client
+          x-api-version: "1.0"
+      postExample:
+        url: /api/v1/resource
+        connect-timeout-seconds: 5
+        read-timeout-seconds: 15
+        write-timeout-seconds: 30
+        retry-max-attempts: 3
+        retry-delay-seconds: 2
+        headers:
+          x-client-id: example-client
+          content-type: application/json
+      putExample:
+        url: /api/v1/resource/{id}
+        connect-timeout-seconds: 5
+        read-timeout-seconds: 30
+        write-timeout-seconds: 30
+        retry-max-attempts: 2
+        retry-delay-seconds: 3
+        headers:
+          x-client-id: example-client
+          content-type: application/json
+      patchExample:
+        url: /api/v1/resource/{id}
+        connect-timeout-seconds: 5
+        read-timeout-seconds: 20
+        write-timeout-seconds: 20
+        retry-max-attempts: 2
+        retry-delay-seconds: 2
+        headers:
+          x-client-id: example-client
+          content-type: application/json
+      deleteExample:
+        url: /api/v1/resource/{id}
+        connect-timeout-seconds: 5
+        read-timeout-seconds: 5
+        write-timeout-seconds: 5
+        retry-max-attempts: 1
+        retry-delay-seconds: 1
+        headers:
+          x-client-id: example-client
